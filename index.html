@@ -9,16 +9,20 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #f7f5f0;
-      --ink: #1a1a18;
-      --muted: #7a7870;
-      --accent: #3d6b4f;
-      --rule: #d8d4cb;
+      --bg:        #0a1a0f;
+      --bg-dark:   #060f08;
+      --bg-subtle: #0f2a16;
+      --border:    #1e3d25;
+      --ink:       #e8f5ec;
+      --muted:     #8ab89a;
+      --dim:       #6a9878;
+      --accent:    #4dcc72;
+      --accent-dk: #0f4020;
     }
 
     html { font-size: 16px; }
@@ -26,330 +30,436 @@
     body {
       background: var(--bg);
       color: var(--ink);
-      font-family: 'DM Mono', monospace;
+      font-family: 'Space Grotesk', sans-serif;
       font-weight: 300;
       min-height: 100vh;
-      padding: 0 1.5rem;
       opacity: 0;
-      animation: fadeIn 1s ease forwards;
-      animation-delay: 0.2s;
+      animation: fadeIn 0.8s ease forwards;
+      animation-delay: 0.1s;
     }
 
-    @keyframes fadeIn {
-      to { opacity: 1; }
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    /* ── Hero ─────────────────────────────────────────── */
+    .hero {
+      padding: 3rem 2.5rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 160px;
+      gap: 2rem;
+      align-items: end;
     }
 
-    .container {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 5rem 0 4rem;
-    }
-
-    /* Header */
-    header {
-      margin-bottom: 4rem;
+    .eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
     }
 
     .name {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: clamp(2.8rem, 7vw, 4.2rem);
-      line-height: 1;
-      letter-spacing: -0.01em;
-      margin-bottom: 0.6rem;
-    }
-
-    .tagline {
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    /* Rule */
-    hr {
-      border: none;
-      border-top: 1px solid var(--rule);
-      margin: 2.5rem 0;
-    }
-
-    /* Section label */
-    .label {
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1.2rem;
-    }
-
-    /* About */
-    .about p {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: 1.35rem;
-      line-height: 1.65;
+      font-size: clamp(2.6rem, 6.5vw, 4.4rem);
+      font-weight: 700;
+      line-height: 0.9;
+      letter-spacing: -0.03em;
       color: var(--ink);
     }
 
-    .about p + p {
-      margin-top: 1rem;
+    .name span { color: var(--accent); }
+
+    .hero-location {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      line-height: 2;
+      margin-top: 1.5rem;
     }
 
-    /* Services */
-    .services {
-      margin-top: 3rem;
+    /* Photo */
+    .photo-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      padding-bottom: 0.3rem;
     }
 
+    .photo-frame {
+      width: 140px;
+      height: 175px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    /* ── Body ─────────────────────────────────────────── */
+    .body { padding: 0 2.5rem 2.5rem; }
+
+    .section {
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .section:last-of-type { border-bottom: none; }
+
+    .label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding-top: 0.3rem;
+    }
+
+    /* ── About ────────────────────────────────────────── */
+    .about-text {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .about-text p + p { margin-top: 0.8rem; }
+
+    /* ── Services ─────────────────────────────────────── */
     .services-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0;
+      gap: 1px;
+      background: var(--border);
     }
 
-    .service-item {
-      padding: 1.1rem 0;
-      border-top: 1px solid var(--rule);
-      font-size: 0.78rem;
-      line-height: 1.5;
+    .service {
+      background: var(--bg);
+      padding: 1.2rem;
     }
 
-    .service-item:nth-child(odd) {
-      padding-right: 2rem;
+    .service-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem;
+      color: var(--accent);
+      margin-bottom: 0.7rem;
     }
 
     .service-name {
-      display: block;
+      font-size: 0.92rem;
+      font-weight: 600;
       color: var(--ink);
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.01em;
     }
 
     .service-desc {
+      font-size: 0.7rem;
       color: var(--muted);
-      font-size: 0.72rem;
+      line-height: 1.6;
     }
 
-    /* Selected work */
-    .work {
-      margin-top: 3rem;
-    }
-
+    /* ── Experience ───────────────────────────────────── */
     .work-item {
       display: grid;
       grid-template-columns: 1fr auto;
-      align-items: baseline;
       gap: 1rem;
-      padding: 1rem 0;
-      border-top: 1px solid var(--rule);
+      align-items: baseline;
+      padding: 0.9rem 0;
+      border-top: 1px solid var(--border);
     }
 
     .work-title {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
+      font-weight: 500;
       color: var(--ink);
       line-height: 1.4;
     }
 
     .work-org {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       color: var(--muted);
       margin-top: 0.2rem;
+      font-weight: 400;
     }
 
     .work-year {
-      font-size: 0.68rem;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-
-    /* Research */
-    .research {
-      margin-top: 3rem;
-    }
-
-    .research-item {
-      padding: 1rem 0;
-      border-top: 1px solid var(--rule);
-      font-size: 0.75rem;
-      line-height: 1.6;
-      color: var(--muted);
-    }
-
-    .research-item strong {
-      color: var(--ink);
-      font-weight: 400;
-      display: block;
-      margin-bottom: 0.3rem;
-      font-size: 0.78rem;
-    }
-
-    /* Contact */
-    .contact {
-      margin-top: 3rem;
-    }
-
-    .contact-line {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem;
-      font-weight: 300;
-      font-style: italic;
-      color: var(--muted);
-      margin-bottom: 1.2rem;
-    }
-
-    .contact-links {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .contact-links a {
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
       color: var(--accent);
+      white-space: nowrap;
+      background: var(--bg-subtle);
+      padding: 0.2rem 0.5rem;
+      border: 1px solid var(--border);
+      align-self: start;
+      margin-top: 0.15rem;
+    }
+
+    /* ── Research ─────────────────────────────────────── */
+    .research-card {
+      background: var(--accent);
+      padding: 1.4rem;
+    }
+
+    .research-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--bg);
+      line-height: 1.55;
+      margin-bottom: 0.8rem;
       text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.2s ease;
-      padding-bottom: 1px;
+      display: block;
     }
 
-    .contact-links a:hover {
-      border-color: var(--accent);
+    .research-title:hover {
+      text-decoration: underline;
     }
 
-    /* Footer */
-    footer {
-      margin-top: 5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--rule);
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
+    .research-meta {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--accent-dk);
+      line-height: 1.8;
+    }
+
+    /* ── Contact ──────────────────────────────────────── */
+    .contact-big {
+      font-size: 1.05rem;
+      font-weight: 300;
       color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-link {
+      display: inline-block;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--bg);
+      text-decoration: none;
+      background: var(--accent);
+      padding: 0.6rem 1.2rem;
+      font-weight: 700;
+      transition: opacity 0.15s ease;
+    }
+
+    .contact-link:hover { opacity: 0.85; }
+
+    /* ── Footer ───────────────────────────────────────── */
+    footer {
       display: flex;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.5rem;
+      padding: 1.2rem 2.5rem;
+      border-top: 1px solid var(--border);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--dim);
+      background: var(--bg-dark);
     }
 
-    @media (max-width: 520px) {
+    /* ── Mobile ───────────────────────────────────────── */
+    @media (max-width: 560px) {
+      .hero {
+        grid-template-columns: 1fr;
+        align-items: start;
+        padding: 2rem 1.25rem 2rem;
+      }
+
+      .photo-col {
+        order: -1;
+        align-items: flex-start;
+        flex-direction: row;
+        gap: 1.25rem;
+      }
+
+      .photo-frame {
+        width: 90px;
+        height: 112px;
+        flex-shrink: 0;
+      }
+
+      .photo-meta {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding-bottom: 0.2rem;
+      }
+
+      .body { padding: 0 1.25rem 2rem; }
+
+      .section {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        padding: 1.5rem 0;
+      }
+
       .services-grid { grid-template-columns: 1fr; }
-      .service-item:nth-child(odd) { padding-right: 0; }
-      .work-item { grid-template-columns: 1fr; gap: 0.3rem; }
+
+      .work-item {
+        grid-template-columns: 1fr;
+        gap: 0.4rem;
+      }
+
+      .work-year {
+        align-self: auto;
+        display: inline-block;
+        margin-top: 0.4rem;
+      }
+
+      footer {
+        padding: 1rem 1.25rem;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
     }
   </style>
-    <!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y0M1KCW8DL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-Y0M1KCW8DL');
   </script>
 </head>
 <body>
-  <div class="container">
 
-    <header>
-      <h1 class="name">Samantha M. Lee</h1>
-      <p class="tagline">Conservation Data &amp; Policy Consulting</p>
-    </header>
+  <div class="hero">
+    <div>
+      <p class="eyebrow">Conservation Data &amp; Policy Consulting</p>
+      <h1 class="name">SAMANTHA<br>M.<span>LEE</span></h1>
+      <p class="hero-location">Buenos Aires + Remote &nbsp;·&nbsp; Spatial Data &nbsp;·&nbsp; Biodiversity Finance &nbsp;·&nbsp; Accountability</p>
+    </div>
+    <div class="photo-col">
+      <div class="photo-frame">
+        <!-- Upload a file called photo.jpg to your GitHub repo and it will appear here -->
+        <img src="photo.jpg" alt="Samantha M. Lee" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </div>
 
-    <section class="about">
+  <div class="body">
+
+    <section class="section">
       <p class="label">About</p>
-      <p>Conservation and policy professional working at the intersection of spatial data, biodiversity finance, and accountability. Based in Buenos Aires, working internationally.</p>
-      <p>My research focuses on barriers to fine-grained spatial tracking of biodiversity aid under the Kunming–Montreal Global Biodiversity Framework.</p>
+      <div class="about-text">
+        <p>Conservation and policy professional working at the intersection of spatial data, biodiversity finance, and accountability. Based in Buenos Aires, working internationally.</p>
+        <p>My research focuses on barriers to fine-grained spatial tracking of biodiversity aid under the Kunming–Montreal Global Biodiversity Framework.</p>
+      </div>
     </section>
 
-    <hr>
-
-    <section class="services">
+    <section class="section">
       <p class="label">Services</p>
       <div class="services-grid">
-        <div class="service-item">
-          <span class="service-name">Spatial Analysis</span>
-          <span class="service-desc">GIS-based mapping and spatial data work for conservation programs and funding portfolios</span>
+        <div class="service">
+          <div class="service-num">01</div>
+          <div class="service-name">Spatial Analysis</div>
+          <div class="service-desc">GIS-based mapping and spatial data work for conservation programs and funding portfolios</div>
         </div>
-        <div class="service-item">
-          <span class="service-name">Conservation Finance</span>
-          <span class="service-desc">Tracking, reporting, and accountability frameworks for biodiversity funding</span>
+        <div class="service">
+          <div class="service-num">02</div>
+          <div class="service-name">Conservation Finance</div>
+          <div class="service-desc">Tracking, reporting, and accountability frameworks for biodiversity funding</div>
         </div>
-        <div class="service-item">
-          <span class="service-name">Grant Writing</span>
-          <span class="service-desc">Proposal development and donor reporting for environmental research and NGOs</span>
+        <div class="service">
+          <div class="service-num">03</div>
+          <div class="service-name">Grant Writing</div>
+          <div class="service-desc">Proposal development and donor reporting for environmental research and NGOs</div>
         </div>
-        <div class="service-item">
-          <span class="service-name">Policy &amp; Research</span>
-          <span class="service-desc">Analysis and communications bridging conservation science and policy audiences</span>
+        <div class="service">
+          <div class="service-num">04</div>
+          <div class="service-name">Policy &amp; Research</div>
+          <div class="service-desc">Analysis and communications bridging conservation science and policy audiences</div>
         </div>
       </div>
     </section>
 
-    <hr>
-
-    <section class="work">
+    <section class="section">
       <p class="label">Selected Experience</p>
-      <div class="work-item">
-        <div>
-          <div class="work-title">Strategy &amp; Partnerships Officer</div>
-          <div class="work-org">Por el Mar Marine Conservation NGO — Buenos Aires</div>
+      <div style="width:100%">
+        <div class="work-item">
+          <div>
+            <div class="work-title">Strategy &amp; Partnerships Officer</div>
+            <div class="work-org">Por el Mar Marine Conservation NGO — Buenos Aires</div>
+          </div>
+          <div class="work-year">2025–</div>
         </div>
-        <div class="work-year">2025–</div>
-      </div>
-      <div class="work-item">
-        <div>
-          <div class="work-title">ERC Starting Grant — writing support</div>
-          <div class="work-org">Client: Dr. Johanna Eklund</div>
+        <div class="work-item">
+          <div>
+            <div class="work-title">ERC Starting Grant — writing support</div>
+            <div class="work-org">Client: Dr. Johanna Eklund</div>
+          </div>
+          <div class="work-year">2026</div>
         </div>
-        <div class="work-year">2026</div>
-      </div>
-      <div class="work-item">
-        <div>
-          <div class="work-title">Curriculum development — Climate Change and Coastal Engineering in the Southern Cone</div>
-          <div class="work-org">Client: EXpanish</div>
+        <div class="work-item">
+          <div>
+            <div class="work-title">Curriculum development — Climate Change and Coastal Engineering in the Southern Cone</div>
+            <div class="work-org">Client: EXpanish</div>
+          </div>
+          <div class="work-year">2026</div>
         </div>
-        <div class="work-year">2026</div>
-      </div>
-      <div class="work-item">
-        <div>
-          <div class="work-title">Policy &amp; Project Communications Manager</div>
-          <div class="work-org">European Fact-Checking Standards Network — Remote</div>
+        <div class="work-item">
+          <div>
+            <div class="work-title">Policy &amp; Project Communications Manager</div>
+            <div class="work-org">European Fact-Checking Standards Network — Remote</div>
+          </div>
+          <div class="work-year">2024–25</div>
         </div>
-        <div class="work-year">2024–25</div>
-      </div>
-      <div class="work-item">
-        <div>
-          <div class="work-title">MSc Environmental Change &amp; Global Sustainability</div>
-          <div class="work-org">University of Helsinki</div>
+        <div class="work-item">
+          <div>
+            <div class="work-title">MSc Environmental Change &amp; Global Sustainability</div>
+            <div class="work-org">University of Helsinki</div>
+          </div>
+          <div class="work-year">2026</div>
         </div>
-        <div class="work-year">2026</div>
       </div>
     </section>
 
-    <hr>
-
-    <section class="research">
+    <section class="section">
       <p class="label">Research</p>
-      <div class="research-item">
-        <strong><a href="https://link.springer.com/article/10.1007/s10460-021-10253-7" target="_blank" style="color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule);">Assembling agroecological socio-natures: A political ecology analysis of urban and peri-urban agriculture in Rosario, Argentina</a></strong>
-        Hammelman, C., Shoffner, E., Cruzat, M., &amp; Lee, S. — Agriculture and Human Values, 2022
+      <div>
+        <div class="research-card">
+          <a href="https://link.springer.com/article/10.1007/s10460-021-10253-7" target="_blank" class="research-title">
+            Assembling agroecological socio-natures: A political ecology analysis of urban and peri-urban agriculture in Rosario, Argentina
+          </a>
+          <div class="research-meta">
+            Hammelman, C., Shoffner, E., Cruzat, M., &amp; Lee, S.<br>
+            Agriculture and Human Values, 2022
+          </div>
+        </div>
       </div>
     </section>
 
-    <hr>
-
-    <section class="contact">
+    <section class="section">
       <p class="label">Contact</p>
-      <p class="contact-line">Open to consulting projects in conservation data, spatial analysis, and biodiversity finance.</p>
-      <div class="contact-links">
-        <a href="https://linkedin.com/in/samanthalee231" target="_blank">LinkedIn</a>
+      <div>
+        <p class="contact-big">Open to consulting projects in conservation data, spatial analysis, and biodiversity finance.</p>
+        <a href="https://linkedin.com/in/samanthalee231" target="_blank" class="contact-link">LinkedIn ↗</a>
       </div>
     </section>
-
-    <footer>
-      <span>Samantha M. Lee</span>
-      <span>Buenos Aires · Remote</span>
-    </footer>
 
   </div>
+
+  <footer>
+    <span>Samantha M. Lee</span>
+    <span>Buenos Aires · Remote</span>
+  </footer>
+
 </body>
 </html>
